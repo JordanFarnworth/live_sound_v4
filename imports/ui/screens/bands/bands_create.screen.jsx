@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import BandsForm from '/imports/collections/bands/ui/bands_form.jsx';
 import {browserHistory} from 'react-router';
 
-class bands_create extends React.Component {
+class BandsCreate extends React.Component {
   constructor(props){
     super(props);
   }
@@ -25,4 +25,4 @@ class bands_create extends React.Component {
   }
 }
 
-export default bands_create;
+export default BandsCreate;

@@ -1,4 +1,6 @@
 import {Meteor} from 'meteor/meteor';
+import EntityHelpers from '/imports/collections/entities/entities.helpers.js'
+
 
 Entities = new Mongo.Collection("entities");
 export default Entities;
@@ -37,19 +39,7 @@ const entitySchema = new SimpleSchema({
     }
 });
 
-Entities.helpers({
-  members(){
-    return Entities.getLink(this._id, 'members').fetch()
-  },
-
-  currentUserInEntity(){
-    let result = false;
-    this.members().forEach((user) => {
-      if(user._id === Meteor.user()._id){result = true;}
-    })
-    return result
-  }
-})
+Entities.helpers(EntityHelpers())
 
 Entities.addLinks({
   members: {

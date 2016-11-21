@@ -8,7 +8,7 @@ import {browserHistory} from 'react-router';
 import ContentLoading from '/imports/ui/shared/content_loading.jsx';
 
 
-class bands_update extends TrackerReact(React.Component) {
+class BandsUpdate extends TrackerReact(React.Component) {
   constructor(props) {
     super(props);
 
@@ -23,9 +23,10 @@ class bands_update extends TrackerReact(React.Component) {
       phoneNumber: 1,
       aboutUs: 1,
       memberIds: 1
-    }).subscribe();
-
-  }
+  }).subscribe();
+  const band = Bands.findOne(props.params.id)
+  this.reactiveBand = ReactiveVar(band);
+}
   componentWillUnmount() {
     if(this.query.unsubscribe === "function"){
       this.query.unsubscribe();
@@ -33,25 +34,25 @@ class bands_update extends TrackerReact(React.Component) {
   }
 
   componentWillMount() {
-    if(!Meteor.user()){
+    if(!!this.reactiveBand || !this.reactiveBand.currentUserInBand()){
       browserHistory.push('/');
     }
   }
 
   render () {
-    const band = Bands.findOne(this.props.params.id)
-    if (!band) {
+
+    if (!this.reactiveBand) {
       return <ContentLoading lineBreakCount={4} />
     }
     return (
       <div className="container">
         <div className="col-md-8 col-md-offset-2">
-          <h1 className="text-center"><a href={"/bands/" + band._id}>{band.name}</a></h1>
-          <BandsForm id="bandsUpdateForm" type="update" doc={band}/>
+          <h1 className="text-center"><a href={"/bands/" + this.reactiveBand._id}>{this.reactiveBand.name}</a></h1>
+          <BandsForm id="bandsUpdateForm" type="update" doc={this.reactiveBand}/>
         </div>
       </div>
     )
   }
 }
 
-export default bands_update;
+export default BandsUpdate;

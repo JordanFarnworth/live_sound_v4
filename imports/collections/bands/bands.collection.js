@@ -1,4 +1,5 @@
 import {Meteor} from 'meteor/meteor';
+import BandHelpers from '/imports/collections/bands/bands.helpers.js';
 
 
 Bands = new Mongo.Collection("bands");
@@ -42,19 +43,7 @@ const bandSchema = new SimpleSchema({
     }
 });
 
-Bands.helpers({
-  members() {
-    return Bands.getLink(this._id, 'members').fetch();
-  },
-
-  currentUserInBand() {
-    let result = false;
-    this.members().forEach((user) => {
-      if(user._id === Meteor.user()._id){result = true;}
-    })
-    return result;
-  }
-});
+Bands.helpers(BandHelpers());
 
 Bands.addLinks({
   members: {

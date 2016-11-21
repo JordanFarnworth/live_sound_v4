@@ -5,7 +5,7 @@ import BandsShowVisitor from '/imports/collections/bands/ui/bands_show.visitor.j
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import ContentLoading from '/imports/ui/shared/content_loading.jsx';
 
-class bands_create extends TrackerReact(React.Component) {
+class BandsCreate extends TrackerReact(React.Component) {
 
   constructor(props){
       super(props);
@@ -54,4 +54,4 @@ class bands_create extends TrackerReact(React.Component) {
   }
 }
 
-export default bands_create;
+export default BandsCreate;

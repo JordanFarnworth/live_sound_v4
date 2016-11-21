@@ -5,6 +5,7 @@ import EntitiesForm from '/imports/collections/entities/ui/entities_form.jsx';
 import {AutoForm} from 'meteor/aldeed:autoform';
 import {browserHistory} from 'react-router';
 import ContentLoading from '/imports/ui/shared/content_loading.jsx';
+import { ReactiveVar } from 'meteor/reactive-var'
 
 class EntitiesUpdate extends TrackerReact(React.Component) {
   constructor(props){
@@ -21,6 +22,8 @@ class EntitiesUpdate extends TrackerReact(React.Component) {
       aboutUs: 1,
       memberIds: 1
     }).subscribe();
+    const entity = Entities.findOne(props.params.id)
+    this.reactiveEntity = ReactiveVar(entity)
   }
 
   componentWillUnmount() {
@@ -30,19 +33,19 @@ class EntitiesUpdate extends TrackerReact(React.Component) {
   }
 
   componentWillMount() {
-    if(!Meteor.user()){
+    if(!!this.reactiveEntity || this.reactiveEntity.currentUserInEntity()){
       browserHistory.push('/');
     }
   }
 
   render () {
-    const entity = Entities.findOne(this.props.params.id)
-    if(!entity){return <ContentLoading lineBreakCount={4} />}
+
+    if(!this.reactiveEntity){return <ContentLoading lineBreakCount={4} />}
     return (
       <div className="container">
         <div className="col-md-8 col-md-offset-2">
-          <h1 className="text-center"><a href={"/entities/" + entity._id}>Update {entity.name}</a></h1>
-          <EntitiesForm id="entitiesUpdateForm" type="update" doc={entity}/>
+          <h1 className="text-center"><a href={"/entities/" + this.reactiveEntity._id}>Update {this.reactiveEntity.name}</a></h1>
+          <EntitiesForm id="entitiesUpdateForm" type="update" doc={this.reactiveEntity}/>
         </div>
       </div>
     )
