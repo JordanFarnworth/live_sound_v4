@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react'
 import {SimpleSchema} from 'meteor/aldeed:simple-schema'
 import Blaze from 'meteor/gadicc:blaze-react-component';
+import {browserHistory} from 'react-router';
+import { ReactiveVar } from 'meteor/reactive-var'
 
 const logInSchema = new SimpleSchema({
   email: {
@@ -30,6 +32,12 @@ class LogInScreen extends React.Component {
         return false;
       }
     });
+    this.reactiveUser = new ReactiveVar(Meteor.user());
+  }
+  componentDidMount(){
+    if(this.reactiveUser){
+      browserHistory.push('/');
+    }
   }
   render () {
     return (

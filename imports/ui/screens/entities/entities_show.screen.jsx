@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import EntitiesShowMember from '/imports/collections/entities/ui/entities_show.member.jsx'
 import EntitiesShowVisitor from '/imports/collections/entities/ui/entities_show.visitor.jsx'
+import ContentLoading from '/imports/ui/shared/content_loading.jsx';
 
 class EntitiesShowScreen extends TrackerReact(React.Component) {
   constructor(props){
@@ -27,7 +28,7 @@ class EntitiesShowScreen extends TrackerReact(React.Component) {
 
   renderEntity(entity) {
     if(!entity){
-      return <h1>Loading..</h1>
+      return <ContentLoading lineBreakCount={4} />
     }
     if(entity.currentUserInEntity()){
       return <EntitiesShowMember entity={entity} loaded={true} />

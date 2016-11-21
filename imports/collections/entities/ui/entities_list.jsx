@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import Entities from '/imports/collections/entities/entities.collection.js'
 import EntityItem from '/imports/collections/entities/ui/entities_item.jsx'
+import ContentLoading from '/imports/ui/shared/content_loading.jsx';
 
 class EntitiesList extends TrackerReact(React.Component) {
   constructor(props){
@@ -17,7 +18,11 @@ class EntitiesList extends TrackerReact(React.Component) {
   }
 
   renderEntityItems(){
-    return Entities.find().fetch().map((entity) => {
+    let entities = Entities.find().fetch();
+    if(!entities){
+      return <ContentLoading lineBreakCount={4} />
+    }
+    return entities.map((entity) => {
       return <EntityItem id={entity._id} key={entity._id + entity.name} name={entity.name} />
     });
   }

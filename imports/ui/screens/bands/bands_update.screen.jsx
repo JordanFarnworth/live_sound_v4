@@ -5,6 +5,7 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import {ReactiveVar} from 'meteor/reactive-var';
 import {Tracker} from 'meteor/tracker';
 import {browserHistory} from 'react-router';
+import ContentLoading from '/imports/ui/shared/content_loading.jsx';
 
 
 class bands_update extends TrackerReact(React.Component) {
@@ -40,7 +41,7 @@ class bands_update extends TrackerReact(React.Component) {
   render () {
     const band = Bands.findOne(this.props.params.id)
     if (!band) {
-      return <h1>Loading...</h1>;
+      return <ContentLoading lineBreakCount={4} />
     }
     return (
       <div className="container">

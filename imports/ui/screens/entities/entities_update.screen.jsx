@@ -4,6 +4,7 @@ import Entities from '/imports/collections/entities/entities.collection.js';
 import EntitiesForm from '/imports/collections/entities/ui/entities_form.jsx';
 import {AutoForm} from 'meteor/aldeed:autoform';
 import {browserHistory} from 'react-router';
+import ContentLoading from '/imports/ui/shared/content_loading.jsx';
 
 class EntitiesUpdate extends TrackerReact(React.Component) {
   constructor(props){
@@ -36,7 +37,7 @@ class EntitiesUpdate extends TrackerReact(React.Component) {
 
   render () {
     const entity = Entities.findOne(this.props.params.id)
-    if(!entity){return <h1>Loading..</h1>}
+    if(!entity){return <ContentLoading lineBreakCount={4} />}
     return (
       <div className="container">
         <div className="col-md-8 col-md-offset-2">

@@ -3,6 +3,7 @@ import Bands from '/imports/collections/bands/bands.collection.js';
 import BandsShowMember from '/imports/collections/bands/ui/bands_show.member.jsx';
 import BandsShowVisitor from '/imports/collections/bands/ui/bands_show.visitor.jsx';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
+import ContentLoading from '/imports/ui/shared/content_loading.jsx';
 
 class bands_create extends TrackerReact(React.Component) {
 
@@ -29,7 +30,7 @@ class bands_create extends TrackerReact(React.Component) {
 
   renderBand(band) {
     if(!band){
-      return <h1>Loading..</h1>
+      return <ContentLoading lineBreakCount={4} />
     }
     if(band.currentUserInBand()){
       return <BandsShowMember band={band} loaded={true} />
