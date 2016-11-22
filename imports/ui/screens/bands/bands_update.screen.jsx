@@ -5,7 +5,7 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import {ReactiveVar} from 'meteor/reactive-var';
 import {Tracker} from 'meteor/tracker';
 import {browserHistory} from 'react-router';
-import ContentLoading from '/imports/ui/shared/content_loading.jsx';
+import ContentLoading from '/imports/ui/shared/content_loading.shared.jsx';
 
 
 class BandsUpdate extends TrackerReact(React.Component) {

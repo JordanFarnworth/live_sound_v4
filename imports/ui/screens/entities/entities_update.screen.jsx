@@ -4,7 +4,7 @@ import Entities from '/imports/collections/entities/entities.collection.js';
 import EntitiesForm from '/imports/collections/entities/ui/entities_form.jsx';
 import {AutoForm} from 'meteor/aldeed:autoform';
 import {browserHistory} from 'react-router';
-import ContentLoading from '/imports/ui/shared/content_loading.jsx';
+import ContentLoading from '/imports/ui/shared/content_loading.shared.jsx';
 import { ReactiveVar } from 'meteor/reactive-var'
 
 class EntitiesUpdate extends TrackerReact(React.Component) {

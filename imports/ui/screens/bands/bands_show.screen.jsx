@@ -3,7 +3,7 @@ import Bands from '/imports/collections/bands/bands.collection.js';
 import BandsShowMember from '/imports/collections/bands/ui/bands_show.member.jsx';
 import BandsShowVisitor from '/imports/collections/bands/ui/bands_show.visitor.jsx';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
-import ContentLoading from '/imports/ui/shared/content_loading.jsx';
+import ContentLoading from '/imports/ui/shared/content_loading.shared.jsx';
 
 class BandsCreate extends TrackerReact(React.Component) {
 

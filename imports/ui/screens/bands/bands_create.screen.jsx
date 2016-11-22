@@ -1,8 +1,9 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
+import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import BandsForm from '/imports/collections/bands/ui/bands_form.jsx';
 import {browserHistory} from 'react-router';
 
-class BandsCreate extends React.Component {
+class asdf extends TrackerReact(React.Component) {
   constructor(props){
     super(props);
   }
@@ -24,5 +25,4 @@ class BandsCreate extends React.Component {
     )
   }
 }
-
-export default BandsCreate;
+export default asdf;

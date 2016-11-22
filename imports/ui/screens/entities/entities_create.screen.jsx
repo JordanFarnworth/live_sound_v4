@@ -1,6 +1,6 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
-import EntitiesForm from '/imports/collections/entities/ui/entities_form.jsx'
+import EntitiesForm from '/imports/collections/entities/ui/entities_form.jsx';
 import {browserHistory} from 'react-router';
 
 class EntitiesCreate extends TrackerReact(React.Component) {

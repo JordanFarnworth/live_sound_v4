@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
-import UserDecision from '/imports/ui/shared/user_decision.jsx';
+import UserDecision from '/imports/ui/shared/user_decision.shared.jsx';
 
 class DecisionScreen extends TrackerReact(React.Component) {
   constructor(props){
