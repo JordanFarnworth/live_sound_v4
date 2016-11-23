@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import Entities from '/imports/collections/entities/entities.collection.js'
 import EntityItem from '/imports/collections/entities/ui/entities_item.jsx'
-import ContentLoading from '/imports/ui/shared/content_loading.jsx';
+import ContentLoading from '/imports/ui/shared/content_loading.shared.jsx';
 
 class EntitiesList extends TrackerReact(React.Component) {
   constructor(props){

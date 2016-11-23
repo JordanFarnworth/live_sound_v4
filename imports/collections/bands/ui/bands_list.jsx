@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import BandItem from '/imports/collections/bands/ui/bands_item.jsx';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import Bands from '/imports/collections/bands/bands.collection.js';
-import ContentLoading from '/imports/ui/shared/content_loading.jsx';
+import ContentLoading from '/imports/ui/shared/content_loading.shared.jsx';
 
 class BandsList extends TrackerReact(React.Component) {
   constructor(props) {
