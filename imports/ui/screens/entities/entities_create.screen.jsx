@@ -9,12 +9,6 @@ class EntitiesCreate extends TrackerReact(React.Component) {
 
   }
 
-  componentWillMount() {
-    if(!Meteor.user()){
-      browserHistory.push('/');
-    }
-  }
-
   render () {
     return (
       <div className="container">

@@ -9,7 +9,8 @@ class BandsList extends TrackerReact(React.Component) {
     super(props);
 
     this.query = Bands.createQuery({
-      name: 1
+      name: 1,
+      memberIds: 1
     }).subscribe();
   }
 

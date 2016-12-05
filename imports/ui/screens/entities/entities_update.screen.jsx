@@ -22,8 +22,6 @@ class EntitiesUpdate extends TrackerReact(React.Component) {
       aboutUs: 1,
       memberIds: 1
     }).subscribe();
-    const entity = Entities.findOne(props.params.id)
-    this.reactiveEntity = ReactiveVar(entity)
   }
 
   componentWillUnmount() {
@@ -32,20 +30,14 @@ class EntitiesUpdate extends TrackerReact(React.Component) {
     }
   }
 
-  componentWillMount() {
-    if(!!this.reactiveEntity || this.reactiveEntity.currentUserInEntity()){
-      browserHistory.push('/');
-    }
-  }
-
   render () {
-
-    if(!this.reactiveEntity){return <ContentLoading lineBreakCount={4} />}
+    const entity = Entities.findOne(this.props.params.id)
+    if(!entity){return <ContentLoading lineBreakCount={4} />}
     return (
       <div className="container">
         <div className="col-md-8 col-md-offset-2">
-          <h1 className="text-center"><a href={"/entities/" + this.reactiveEntity._id}>Update {this.reactiveEntity.name}</a></h1>
-          <EntitiesForm id="entitiesUpdateForm" type="update" doc={this.reactiveEntity}/>
+          <h1 className="text-center"><a href={"/entities/" + entity._id}>Update {entity.name}</a></h1>
+          <EntitiesForm id="entitiesUpdateForm" type="update" doc={entity}/>
         </div>
       </div>
     )

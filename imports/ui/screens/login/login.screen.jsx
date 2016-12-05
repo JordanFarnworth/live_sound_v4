@@ -34,11 +34,6 @@ class LogInScreen extends React.Component {
     });
     this.reactiveUser = new ReactiveVar(Meteor.user());
   }
-  componentDidMount(){
-    if(this.reactiveUser){
-      browserHistory.push('/');
-    }
-  }
   render () {
     return (
       <div className="container">

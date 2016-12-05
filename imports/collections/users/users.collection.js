@@ -1,4 +1,4 @@
-
+import UserHelpers from '/imports/collections/users/users.helpers.js';
 
 const userSchema = new SimpleSchema({
     emails: {
@@ -34,5 +34,7 @@ const userSchema = new SimpleSchema({
         optional: true
     }
 });
+
+Meteor.users.helpers(UserHelpers());
 
 Meteor.users.attachSchema(userSchema);

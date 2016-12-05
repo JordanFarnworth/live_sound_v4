@@ -33,25 +33,28 @@ class BandsUpdate extends TrackerReact(React.Component) {
     }
   }
 
-  componentWillMount() {
-    if(!!this.reactiveBand || !this.reactiveBand.currentUserInBand()){
-      browserHistory.push('/');
-    }
+  componentDidMount() {
+    debugger
+    // if(!!this.reactiveBand || !this.reactiveBand.currentUserInBand()){
+    //   browserHistory.push('/');
+    // }
   }
 
   render () {
 
     if (!this.reactiveBand) {
       return <ContentLoading lineBreakCount={4} />
-    }
-    return (
-      <div className="container">
-        <div className="col-md-8 col-md-offset-2">
-          <h1 className="text-center"><a href={"/bands/" + this.reactiveBand._id}>{this.reactiveBand.name}</a></h1>
-          <BandsForm id="bandsUpdateForm" type="update" doc={this.reactiveBand}/>
+    } else {
+      console.log(this.reactiveBand)
+      return (
+        <div className="container">
+          <div className="col-md-8 col-md-offset-2">
+            <h1 className="text-center"><a href={"/bands/" + this.reactiveBand._id}>{this.reactiveBand.name}</a></h1>
+            <BandsForm id="bandsUpdateForm" type="update" doc={this.reactiveBand}/>
+          </div>
         </div>
-      </div>
-    )
+      )
+    }
   }
 }
 

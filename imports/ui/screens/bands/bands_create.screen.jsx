@@ -8,8 +8,13 @@ class asdf extends TrackerReact(React.Component) {
     super(props);
   }
 
-  componentWillMount() {
-    if(!Meteor.user()){
+
+  loggedIn(){
+    return Meteor.loggingIn()
+  }
+
+  enforceAuth(){
+    if(!this.loggedIn()){
       browserHistory.push('/');
     }
   }
